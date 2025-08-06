@@ -21,7 +21,7 @@ async function connectToDatabase() {
       password: dbUrl.password,
       database: dbUrl.pathname.substring(1),
       port: dbUrl.port || 3306,
-      ssl: { rejectUnauthorized: true },
+      ssl: { rejectUnauthorized: false },
     };
     pool = mysql.createPool(connectionConfig);
     console.log('MySQL pool created.');
@@ -80,6 +80,7 @@ app.listen(3000, async () => {
   await connectToDatabase();
   console.log('Server is running on http://localhost:3000');
 });
+
 
 
 
